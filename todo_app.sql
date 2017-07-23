@@ -28,7 +28,7 @@
 
   CREATE TABLE tasks (
     id SERIAL PRIMARY KEY,
-    title VARCHAR(45),
+    title VARCHAR(225) NOT NULL,
     description TEXT,
     created_at timestamp,
     updated_at timestamp NOT NULL DEFAULT NOW(),
@@ -36,7 +36,6 @@
     );
 
   ALTER TABLE tasks DROP COLUMN completed;
-
   ALTER TABLE tasks ADD COLUMN completed_at timestamp DEFAULT NULL;
 
   ALTER TABLE tasks ALTER COLUMN updated_at SET NOT NULL;
@@ -61,7 +60,7 @@ VALUES ( 'Study PostgreSQL', 'Read all the documentation' );
 
 #14 select all the titles of tasks that are not yet completed
 
-SELECT title FROM tasks WHERE completed_at = NULL
+SELECT title FROM tasks WHERE completed_at = NULL;
 
 #15 update the task with a title of 'Study SQL' to be completed as of now
 
